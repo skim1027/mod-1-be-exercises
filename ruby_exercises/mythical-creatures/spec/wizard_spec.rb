@@ -20,7 +20,9 @@ RSpec.describe Wizard do
   it 'is not always bearded' do
     wizard = Wizard.new('Valerie', bearded: false)
     expect(wizard.bearded?).to be false
+    
   end
+
 
   it 'has root powers' do
     wizard = Wizard.new('Stella', bearded: false)
@@ -31,22 +33,41 @@ RSpec.describe Wizard do
     wizard = Wizard.new('Sal', bearded: true)
     expect(wizard.incantation('rm -rf /home/mirandax')).to eq('sudo rm -rf /home/mirandax')
   end
+  #not sure how my code passed based on how I set upt the test; 
+
+  # def bearded?
+  #   if name == "Ben"
+  #     true 
+  #    else
+  #     false
+  #    end
+  # end
 
   it 'starts rested' do
     # create wizard
+    wizard = Wizard.new('Sammy', bearded: false)
     # .rested? returns true
+    expect(wizard.rested?).to be true
   end
 
   it 'can cast spells' do
     # create wizard
+    wizard = Wizard.new('Harry')
     # .cast returns "MAGIC MISSILE!"
+    expect(wizard.cast).to eq("MAGIC MISSILE!")
   end
 
   it 'gets tired after casting three spells' do
     # create wizard
+    wizard = Wizard.new('Ron')
     # casts spell twice
+    wizard.cast_spell
+    wizard.cast_spell
     # check if wizard is rested
+    expect(wizard.rested?).to be true
     # casts spell
+    wizard.cast_spell
     # check wizard is not rested
+    expect(wizard.rested?).to be false
   end
 end
